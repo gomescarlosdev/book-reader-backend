@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface IBookService {
 
-    List<BookFileEntity> findAll(String customerId);
+    List<BookFileEntity> findAllByCustomerId(String customerId);
 
-    List<BookFileEntity> findAllByIsFavorite(String customerId);
-
-    void create(int customerId, BookFileEntity book);
+    void create(String customerId, BookFileEntity book);
 
     void delete(int bookFileId);
 }

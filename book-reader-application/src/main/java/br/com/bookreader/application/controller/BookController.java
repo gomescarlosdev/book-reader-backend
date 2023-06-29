@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+//controlador REST em Java que usa o Spring Framework
 @RestController
 @RequestMapping("/v1/books")
 public class BookController {
@@ -36,24 +36,22 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping
-    public List<BookResponse> findAll(String customerId) {
-        return bookService.findAll(customerId).stream()
-                .map(bookModel -> modelMapper.map(bookModel, BookResponse.class))
+    //retorna uma lista de livros que pertencem a um determinado cliente:
+    @GetMapping("/{customerId}")
+    public List<BookResponse> getAllBooks(String customerId) {
+        return bookService.findAllByCustomerId(customerId).stream()
+                .map(entity -> modelMapper.map(entity, BookResponse.class))
                 .collect(Collectors.toList());
-    }
+    } 
+    //método usa o serviço bookService para buscar todos os livros que pertencem ao cliente e mapeia cada 
+    //entidade de livro para uma resposta de livro usando o ModelMapper
 
-    @GetMapping("/favorites")
-    public List<BookResponse> findFavorites(String customerId) {
-        return bookService.findAllByIsFavorite(customerId).stream()
-                .map(bookModel -> modelMapper.map(bookModel, BookResponse.class))
-                .collect(Collectors.toList());
-    }
 
+    // faz upload de um arquivo de livro para o servidor:
     @PostMapping("/{customerId}/upload")
     @ResponseStatus(HttpStatus.CREATED)
     public void uploadFile(
-            @PathVariable Integer customerId,
+            @PathVariable String customerId,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         UploadBookRequest uploadBookRequest = UploadBookRequest
@@ -62,12 +60,17 @@ public class BookController {
                 .fileName(file.getOriginalFilename())
                 .fileData(file.getBytes())
                 .build();
-        bookService.create(customerId, modelMapper.map(uploadBookRequest, BookFileEntity.class));
+        bookService.create(
+                customerId,
+                modelMapper.map(uploadBookRequest, BookFileEntity.class)
+        );
     }
+ //O método cria um objeto UploadBookRequest com os dados do cliente e do arquivo e usa o serviço bookService para 
+ //fazer upload do arquivo de livro para o servidor
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id) {
+    public void deleteFile(@PathVariable int id) {
         bookService.delete(id);
     }
 

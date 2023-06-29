@@ -15,8 +15,8 @@ import lombok.Setter;
 @Builder
 public class UploadBookRequest {
 
-    private Integer customerId;
+    private String customerId;
     private String fileName;
     private byte[] fileData;
 
-}
+} //classe usada como um objeto de transferência de dados (DTO) para fazer upload de um livro

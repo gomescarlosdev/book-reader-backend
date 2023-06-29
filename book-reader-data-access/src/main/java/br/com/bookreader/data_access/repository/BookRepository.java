@@ -10,10 +10,6 @@ import java.util.List;
 @Repository
 public interface BookRepository extends CrudRepository<BookFileEntity, Integer> {
 
-//    Page<BookModel> findByStatus(BookStatus name, Pageable pageable);
-//
-//    List<BookEntity> findByCustomer(CustomerModel name);
+    List<BookFileEntity> findAllByCustomerId(String customerId); //retorna uma lista de livros que pertencem a um determinado cliente
 
-//    List<BookFileEntity> findAllByCustomerId(String customerId);
-//    List<BookFileEntity> findAllByStatus(String customerId);
 }

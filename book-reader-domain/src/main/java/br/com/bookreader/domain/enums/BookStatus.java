@@ -6,5 +6,5 @@ public enum BookStatus {
     SOLD,
     DELETED;
 
-}
+} // lista os possíveis valores de status que um livro pode ter
 
