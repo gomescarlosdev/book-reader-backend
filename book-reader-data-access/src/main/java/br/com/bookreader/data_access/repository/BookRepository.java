@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BookRepository extends CrudRepository<BookFileEntity, Integer> {
 
-    List<BookFileEntity> findAllByCustomerId(String customerId); //retorna uma lista de livros que pertencem a um determinado cliente
+    List<BookFileEntity> findAllByCustomerId(String customerId);
 
 }
