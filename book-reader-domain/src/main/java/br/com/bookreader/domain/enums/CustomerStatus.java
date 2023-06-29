@@ -1,4 +1,4 @@
-package br.com.bookreader.data_access.enums;
+package br.com.bookreader.domain.enums;
 
 public enum CustomerStatus {
     ACTIVE,

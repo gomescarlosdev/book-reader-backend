@@ -1,4 +1,4 @@
-package br.com.bookreader.domain.repository;
+package br.com.bookreader.data_access.repository;
 
 public interface UserRepository {
 }

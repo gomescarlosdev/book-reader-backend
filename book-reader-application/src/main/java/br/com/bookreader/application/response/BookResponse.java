@@ -1,2 +1,6 @@
-package br.com.bookreader.application.response;public class BookResponse {
+package br.com.bookreader.application.response;
+
+public class BookResponse {
+
+
 }

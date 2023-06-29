@@ -2,23 +2,19 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     java
-    id("org.springframework.boot") version "3.1.1"
-    id("io.spring.dependency-management") version "1.1.0"
+    id("org.springframework.boot") version "2.7.13"
+    id("io.spring.dependency-management") version "1.0.15.RELEASE"
 }
 
 dependencyManagement {
     imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR9")
     }
 }
 
 dependencies {
     api(project(":book-reader-service"))
-
-    api("org.springframework.boot:spring-boot-starter-web")
-    api("org.springframework.boot:spring-boot-starter-data-jpa")
-    api("org.springframework.boot:spring-boot-starter-actuator")
-    api("org.flywaydb:flyway-core")
+    api(project(":book-reader-data-access"))
 }
 
 springBoot {
@@ -44,13 +40,11 @@ tasks.named<BootJar>("bootJar") {
             }
             intoLayer("dependencies")
         }
-        layerOrder.set(
-            listOf(
-                "dependencies",
-                "spring-boot-loader",
-                "book-reader-backend-dependencies",
-                "application"
-            )
+        layerOrder = listOf(
+            "dependencies",
+            "spring-boot-loader",
+            "book-reader-backend-dependencies",
+            "application"
         )
     }
 }

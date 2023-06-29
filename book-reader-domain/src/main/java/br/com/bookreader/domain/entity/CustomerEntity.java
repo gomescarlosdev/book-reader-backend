@@ -1,6 +1,6 @@
-package br.com.bookreader.data_access.entity;
+package br.com.bookreader.domain.entity;
 
-import br.com.bookreader.data_access.enums.CustomerStatus;
+import br.com.bookreader.domain.enums.CustomerStatus;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

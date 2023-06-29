@@ -18,22 +18,22 @@ import javax.persistence.Lob;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Entity(name = "BOOK")
-public class BookEntity {
+@Entity(name = "BOOK_FILE")
+public class BookFileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 
-    @Column
+    @Column(name = "CUSTOMER_ID")
     private Integer customerId;
 
-    @Column
-    private String name;
+    @Column(name = "FILE_NAME")
+    private String fileName;
 
     @Lob
-    @Column
+    @Column(name = "FILE_DATA")
     private byte[] fileData;
 
 }

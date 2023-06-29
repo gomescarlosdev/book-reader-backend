@@ -11,7 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EnableJpaRepositories(basePackages = {"br.com.bookreader.data_access.repository"})
 @EntityScan(basePackages = {"br.com.bookreader.domain.entity"})
-@ComponentScan(basePackages = {"br.com.bookreader.application"})
+@ComponentScan(basePackages = {
+		"br.com.bookreader.*", "org.modelmapper.*"
+})
 public class BookReaderApplication {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package br.com.bookreader.application.controller;
+package br.com.bookreader.application.request;
 
 public class UpdateBookRequest {
 

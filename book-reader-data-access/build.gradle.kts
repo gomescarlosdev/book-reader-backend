@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    runtimeOnly("com.mysql:mysql-connector-j")
+    api(project(":book-reader-domain"))
 }
 
 tasks.bootJar { enabled = false }
